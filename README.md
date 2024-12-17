@@ -14,9 +14,13 @@
 В проекте используются две сущности: Car и Owner
 
 Car содержит id (УИД), brand (бренд машины), modelName (название модели)
+
 Owner содержит id (УИД), firstName (имя), lastName (фамилия), birthdate (дата рождения)
+
 EmailNotification содержит id (УИД), address (адрес), content (описание)
+
 Logging содержит id (УИД), entity (название класса Entity), eventType (CREATE/DELETE/UPDATE), substance (аргументы)
+
 
 Диаграмма БД выглядит следующим образом:
 
