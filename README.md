@@ -24,7 +24,7 @@ Logging содержит id (УИД), entity (название класса Enti
 
 Диаграмма БД выглядит следующим образом:
 
-![image](https://github.com/user-attachments/assets/aa503fbf-1019-4f9d-95ac-111500edbf70)
+![image](https://github.com/user-attachments/assets/763cabc7-6f8e-4859-a746-150471f77c70)
 
 # Демо работы
 
