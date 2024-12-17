@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Players</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+<div class="container mx-auto px-4 py-8">
+  <div class="space-y-4 mb-8">
+    <div class="text-center">
+      <form th:action="@{/mainPage}">
+        <input type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" value="Show main page">
+      </form>
+    </div>
+    <div class="text-center">
+      <form th:action="@{/owners}">
+        <input type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" value="Show owners">
+      </form>
+    </div>
+    <div class="text-center">
+      <form th:action="@{/cars}">
+        <input type="submit" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" value="Show cars">
+      </form>
+    </div>
+    <div class="text-center">
+      <form th:action="@{/owners/create}" th:method="get">
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Create owner</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg overflow-hidden">
+    <h2 class="text-2xl font-bold p-4 bg-blue-100">Players</h2>
+    <table class="w-full">
+      <thead>
+      <tr class="bg-blue-200 text-blue-700 uppercase text-sm leading-normal">
+        <th class="py-3 px-6 text-left">Id</th>
+        <th class="py-3 px-6 text-left">First name</th>
+        <th class="py-3 px-6 text-left">Last name</th>
+        <th class="py-3 px-6 text-left">Birthday</th>
+        <th class="py-3 px-6 text-center" colspan="2">Actions</th>
+      </tr>
+      </thead>
+      <tbody class="text-gray-600 text-sm font-light">
+      <tr th:each="owner : ${owners}" class="border-b border-gray-200 hover:bg-gray-100">
+        <td class="py-3 px-6 text-left whitespace-nowrap" th:text="${owner.id}"></td>
+        <td class="py-3 px-6 text-left" th:text="${owner.firstName}"></td>
+        <td class="py-3 px-6 text-left" th:text="${owner.lastName}"></td>
+        <td class="py-3 px-6 text-left" th:text="${owner.birthdate}"></td>
+        <td class="py-3 px-6 text-center">
+          <form th:action="@{/owners/{id}/update(id=${owner.id})}">
+            <input type="submit" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded" value="Update">
+          </form>
+        </td>
+        <td class="py-3 px-6 text-center">
+          <form th:action="@{/owners/{id}/delete(id=${owner.id})}" th:method="delete">
+            <input type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" value="Delete">
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update car</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+<div class="container mx-auto max-w-md p-6 bg-white rounded-lg shadow-xl mt-10">
+    <form th:method="patch" th:action="@{/cars/{id}/update(id=${car.id})}" th:object="${car}">
+        <h1 class="text-2xl font-bold mb-6 text-center">Update car</h1>
+        <input type="hidden" th:field="*{id}">
+        <div class="mb-4">
+            <label for="modelName" class="block text-gray-700 text-sm font-bold mb-2">Model Name: </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="modelName" th:field="*{modelName}" type="text" required/>
+        </div>
+        <div class="mb-4">
+            <label for="brand" class="block text-gray-700 text-sm font-bold mb-2">Brand: </label>
+            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="brand" th:field="*{brand}" th:name="${brand}">
+                <option th:value="BMW">BMW</option>
+                <option th:value="Kia">Kia</option>
+                <option th:value="Toyota">Toyota</option>
+                <option th:value="Geely">Geely</option>
+                <option th:value="Exeed">Exeed</option>
+            </select>
+        </div>
+        <div class="mb-6">
+            <label for="ownerId" class="block text-gray-700 text-sm font-bold mb-2">Owner id: </label>
+            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="ownerId" th:name="ownerId" required>
+                <option th:each="ownerId : ${ownerIds}" th:value="${ownerId}" th:text="${ownerId}"
+                        th:selected="${ownerId==car.owner.id}">
+                </option>
+            </select>
+        </div>
+        <div class="flex items-center justify-center">
+            <input type="submit" value="Update" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>

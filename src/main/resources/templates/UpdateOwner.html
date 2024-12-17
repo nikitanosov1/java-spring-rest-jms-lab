@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update owner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+<div class="container mx-auto max-w-md p-6 bg-white rounded-lg shadow-xl mt-10">
+    <form th:method="patch" th:action="@{/owners/{id}/update(id=${owner.id})}" th:object="${owner}">
+        <h1 class="text-2xl font-bold mb-6 text-center">Update owner</h1>
+        <input type="hidden" th:field="*{id}" value="<%= owner.getId() %>">
+        <div class="mb-4">
+            <label for="firstName" class="block text-gray-700 text-sm font-bold mb-2">First name: </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="firstName" th:field="*{firstName}" type="text" required/>
+        </div>
+        <div class="mb-4">
+            <label for="lastName" class="block text-gray-700 text-sm font-bold mb-2">Last name: </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="lastName" th:field="*{lastName}" type="text" required/>
+        </div>
+        <div class="mb-6">
+            <label for="birthdate" class="block text-gray-700 text-sm font-bold mb-2">Birthday: </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="birthdate" th:field="*{birthdate}" type="date" required/>
+        </div>
+        <div class="flex items-center justify-center">
+            <input type="submit" value="Update" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer"/>
+        </div>
+    </form>
+</div>
+</body>
+</html>
